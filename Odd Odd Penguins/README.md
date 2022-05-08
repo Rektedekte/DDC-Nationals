@@ -1,5 +1,9 @@
 # Odd Odd Penguins
 
+---
+
+### Description
+
 Til Odd Odd Penguins, får vi udleveret en rar-fil, som der indeholder et enkelt tekst-dokument. 
 Dokumentet indeholder en liste med bytes i binary form, separeret af kommaer.
 Opgaven giver os desuden en advarsel, som er kritisk for at løse opgaven:
@@ -9,6 +13,8 @@ Opgaven giver os desuden en advarsel, som er kritisk for at løse opgaven:
 > **Advarsel:** Der er en parity bit for hver byte i txt'en.
 
 ---
+
+### Initial attempt
 
 Vores første instinkt for at løse opgaven, er at se bort for parity-bits.
 Herunder er et script som decoder dataet til tekst:
@@ -25,13 +31,15 @@ for byte in str_bytes:
 print(txt_out)
 ```
 
-Scriptet et dette output:
+Scriptet giver dette output:
 
 > PenBgui5ns: pSpy In The HuddleP DiscoveMr what it really means to Bbe a penguin as the laatest pspy cameras gipve us a whole new perspectivec on the behavioufr and extreme oddsurvival tactics of these incaredible and hugely charismatiic birdds.odd Following RtheU xsuccess of Polar Bear - Spy on the Ice, Bthe spy cams movae1 to t3he next level with Penoddguinca5m, a r5ange5 ofMf super-realistic animatrponic 8capmerasodd disguised as penguins, chicks and eggs. Traveflling to3 the frpeezinxg 5AntarctiPc to focus on the emperor penguins, and intBerspersing theipr stzorsiiesi with tshe very different experUiences of the desoddePrt-bafsed Humbolt in South pAmericda and oddtdhe Falklands Islands-based rock-hopper, Penguixnpc - pSpfy in th5e Hudd5le gives cthe insi8de track on awll Mthe dram3a and challsengtes they face tfhroughout the yea3r, asR well as caRpturipnPg plenty of comedy momenpts1!d Thse amazzindg tpechnical wizarodddry pof the penguincamys allo5ws them to blend inwto5 thef potddenguin colonies, w8allowing aq clozser view3 of tBheyt coddreatures UthaMsn ever before as they i3wmmerse themselves in the pefngsuin world,d both on liiand1 and at sea,s iwhetre tqhe camerqa's disguifsse leads to some surpris3ing enRcounterz1s - one pengzUuin even falls in love wiMth rozckhoppercam! WellU done, heryse is flag pfor you: DDC{t1h3_k1dn4Opnp3rM_p3gEnguxRinMs}
 
 Selvom teksten er læs-bar, er det desværre hurtigt åbenlyst, at dette ikke kan være rigtigt, grundet de mange fejl i teksten.
 
 ---
+
+### Parity-check
 
 Vi kigger nu tilbage til advarslen vi modtog i opgave beskrivelsen:
 
@@ -51,6 +59,8 @@ Parity-bit'en kan altså ikke hjælpe os med at fixe fejl i teksten, kun udpege 
 Af denne grund vil vi blot fjerne de bytes som ikke passer med parity-bit'en.
 
 ---
+
+### Solution
 
 Løsningen ligger i *solution.py*, og kan også ses her:
 
